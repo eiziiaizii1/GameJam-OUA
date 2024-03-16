@@ -6,7 +6,7 @@ public class BulletBehavior : MonoBehaviour
 {
 
     float deleteTime = 2f;
-    int bulletDamage = 5;
+    public int bulletDamage = 5;
     public float knockbackMultiplier = 10f;
 
     void Start()

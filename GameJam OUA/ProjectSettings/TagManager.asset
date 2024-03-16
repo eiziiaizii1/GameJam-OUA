@@ -45,6 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: "\u0130nteract layer"
+    uniqueID: 3366416317
+    locked: 0
   - name: ForeGround
     uniqueID: 2404981267
+    locked: 0
+  - name: BackGround
+    uniqueID: 3260258577
     locked: 0

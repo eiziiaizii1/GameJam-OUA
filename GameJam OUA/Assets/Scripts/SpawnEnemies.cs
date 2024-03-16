@@ -25,9 +25,8 @@ public class SpawnEnemies : MonoBehaviour
         if (timePassed >= timeInterval && currentEnemyNum < maxEnemyNumber)
         {
             int randomEnemyIndex = Random.Range(0, enemies.Count);
-            Instantiate(enemies[randomEnemyIndex], transform.position, Quaternion.identity);
-            enemies[randomEnemyIndex].GetComponent<EnemyBehavior>().setEnemyTarget(enemyTargetLocation);
-            currentEnemyNum++;
+            GameObject newEnemy = Instantiate(enemies[randomEnemyIndex], transform.position, Quaternion.identity);
+            newEnemy.GetComponent<EnemyBehavior>().setEnemyTarget(enemyTargetLocation);
             timePassed = 0;
             timeInterval = Random.Range(1,2);
         }

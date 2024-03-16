@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     public int health = 50;
+    public float damage = 10f;
 
     public Transform targetPosition; // is assigned by Spawn script
     public float movementSpeed = 2f;
