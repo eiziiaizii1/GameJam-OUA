@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2585613864151299378, guid: de8e5c51d897d05439eddf5ed52d9dec, type: 3}
   bulletSpawnPos: {fileID: 3412723477463094878}
-  shootTime: 0.3
+  shootTime: 0.25
 --- !u!50 &2363200155549489501
 Rigidbody2D:
   serializedVersion: 4

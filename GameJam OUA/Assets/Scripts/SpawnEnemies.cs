@@ -7,7 +7,7 @@ public class SpawnEnemies : MonoBehaviour
     [SerializeField] List<GameObject> enemies = new List<GameObject>();
     [SerializeField] Transform enemyTargetLocation;
      
-    float timeInterval = 1;
+    public float timeInterval = 2;
     int maxEnemyNumber = 5;
     int currentEnemyNum = 0;
     float timePassed = 0;
@@ -29,6 +29,7 @@ public class SpawnEnemies : MonoBehaviour
             enemies[randomEnemyIndex].GetComponent<EnemyBehavior>().setEnemyTarget(enemyTargetLocation);
             currentEnemyNum++;
             timePassed = 0;
+            timeInterval = Random.Range(1,5);
         }
     }
 }

@@ -8,7 +8,8 @@ public class BulletBehavior : MonoBehaviour
     float deleteTime = 2f;
     float bulletSpeed = 10f;
     int bulletDamage = 5;
-    
+    public float knockbackMultiplier = 10f;
+
     void Start()
     {
         StartCoroutine(DestroyAfterDelay());
@@ -32,7 +33,7 @@ public class BulletBehavior : MonoBehaviour
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             Vector2 knockbackDirection = new Vector2(collision.transform.position.x - transform.position.x, 1).normalized;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * 50f, ForceMode2D.Impulse);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackMultiplier, ForceMode2D.Impulse);
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -43,7 +44,7 @@ public class BulletBehavior : MonoBehaviour
             Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
             Vector2 knockbackDirection = new Vector2(collision.transform.position.x - transform.position.x,1).normalized;           
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * 50f, ForceMode2D.Impulse);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackMultiplier, ForceMode2D.Impulse);
         }
 
         Destroy(gameObject);

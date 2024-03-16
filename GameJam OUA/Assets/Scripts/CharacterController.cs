@@ -22,7 +22,7 @@ public class CharacterController : MonoBehaviour
     private SpriteRenderer sprite;
 
     int health = 100;
-    int damage = 5;
+    int damage = 10;
 
     void Start()
     {
