@@ -32,6 +32,11 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+    public void setEnemyTarget(Transform target)
+    {
+        targetPosition = target;
+    }
+
     void FixedUpdate()
     {
         if (targetPosition == null) return;
