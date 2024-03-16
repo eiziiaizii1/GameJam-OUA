@@ -7,6 +7,7 @@ public class CharacterController : MonoBehaviour
 {
     Rigidbody2D playerRb;
     float playerSpeed = 7f;
+    float horizontalInput;
 
     // lookDirection = 1 -> Facing Right, lookDirection = -1 -> Facing Left
     float lookDirection = 1f;
@@ -27,11 +28,9 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
 
-        // Moves the player
-        playerRb.velocity = new Vector2(horizontalInput * playerSpeed, playerRb.velocity.y);
-
+        
         HandleFlip(horizontalInput);
 
         currentTime += Time.deltaTime;
@@ -41,18 +40,14 @@ public class CharacterController : MonoBehaviour
             Shoot();
             currentTime = 0f;
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
-
         
     }
 
-    private void Jump()
+    private void FixedUpdate()
     {
-        Debug.Log("To be implemented");
+        // Moves the player
+        playerRb.velocity = new Vector2(horizontalInput * playerSpeed, playerRb.velocity.y);
+
     }
 
     public void dealDamage(int incomingDamage)
