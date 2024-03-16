@@ -8,9 +8,9 @@ public class SpawnEnemies : MonoBehaviour
     [SerializeField] Transform enemyTargetLocation;
      
     public float timeInterval = 2;
-    int maxEnemyNumber = 5;
-    int currentEnemyNum = 0;
-    float timePassed = 0;
+    public int maxEnemyNumber = 5;
+    public int currentEnemyNum = 0;
+    public float timePassed = 0;
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class SpawnEnemies : MonoBehaviour
             enemies[randomEnemyIndex].GetComponent<EnemyBehavior>().setEnemyTarget(enemyTargetLocation);
             currentEnemyNum++;
             timePassed = 0;
-            timeInterval = Random.Range(1,5);
+            timeInterval = Random.Range(1,2);
         }
     }
 }

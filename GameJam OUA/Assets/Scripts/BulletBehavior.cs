@@ -6,7 +6,6 @@ public class BulletBehavior : MonoBehaviour
 {
 
     float deleteTime = 2f;
-    float bulletSpeed = 10f;
     int bulletDamage = 5;
     public float knockbackMultiplier = 10f;
 

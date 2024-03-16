@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    int health = 50;
+    public int health = 50;
 
-    public Transform targetPosition;
+    public Transform targetPosition; // is assigned by Spawn script
     public float movementSpeed = 2f;
     public float stopDistance = 1f;
 
     private Rigidbody2D rb;
-
     private SpriteRenderer sprite;
+    private Color defaultColor;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = rb.GetComponent<SpriteRenderer>();
-        if (targetPosition == null)
-        {
-            Debug.LogError("Target position is not set!");
-        }
+        defaultColor = GetComponent<SpriteRenderer>().color;
     }
 
     private void Update()
@@ -35,6 +32,13 @@ public class EnemyBehavior : MonoBehaviour
     public void setEnemyTarget(Transform target)
     {
         targetPosition = target;
+        if (target != null)
+        {
+            Debug.Log("Target is set");
+        }else
+        {
+            Debug.Log("TARGET IS NULL");
+        }
     }
 
     void FixedUpdate()
@@ -64,9 +68,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public IEnumerator FlashRed()
     {
-        Color originalColor = sprite.color;
         sprite.color = new Color(1f,0f,0f,0.5f);
         yield return new WaitForSeconds(0.1f);
-        sprite.color= originalColor;
+        sprite.color= defaultColor;
     }
 }

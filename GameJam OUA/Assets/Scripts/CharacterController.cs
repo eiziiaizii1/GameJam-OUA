@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] float shootTime = 0.5f;
 
     private SpriteRenderer sprite;
+    private Color defaultColor; 
 
     int health = 100;
     int damage = 10;
@@ -28,6 +29,7 @@ public class CharacterController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        defaultColor = GetComponent<SpriteRenderer>().color;
     }
 
     void Update()
@@ -69,10 +71,9 @@ public class CharacterController : MonoBehaviour
 
     public IEnumerator FlashRed()
     {
-        Color originalColor = sprite.color;
         sprite.color = new Color(1f, 0f, 0f, 0.5f);
         yield return new WaitForSeconds(0.1f);
-        sprite.color = originalColor;
+        sprite.color = defaultColor;
     }
 
     private void HandleFlip(float horizontalInput)
