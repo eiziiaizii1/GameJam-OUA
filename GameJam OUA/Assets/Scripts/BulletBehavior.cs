@@ -14,35 +14,38 @@ public class BulletBehavior : MonoBehaviour
         StartCoroutine(DestroyAfterDelay());
     }
 
-
-    //public void InitializeBullet(int bulletDamage, int bulletSpeed)
-    //{
-    //    this.bulletDamage = bulletDamage;
-    //    this.bulletSpeed = bulletSpeed;
-    //}
-
     public void setBulletDamage(int damage)
     {
         bulletDamage = damage;
     }
 
-    //public void Shoot(Vector3 spawnPosition, Quaternion rotation, float lookDirection, int damage) {
-    //    GameObject newBullet = Instantiate(gameObject, spawnPosition, rotation);
-    //    Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
-    //    Vector2 direction = new Vector2(lookDirection, 0f);
-
-    //    setBulletDamage(damage);
-
-    //    rb.velocity = direction * bulletSpeed;
-    //}
-
-    // Bullet culling can be improved
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Color damageColor = new Color(1,0,0,0.5f);
+
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Dealing Damage
             collision.gameObject.GetComponent<CharacterController>().dealDamage(bulletDamage);
+
+            // Knockback
+            Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
+            Vector2 knockbackDirection = new Vector2(collision.transform.position.x - transform.position.x, 1).normalized;
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * 50f, ForceMode2D.Impulse);
         }
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Dealing damage
+            collision.gameObject.GetComponent<EnemyBehavior>().dealDamage(bulletDamage);
+
+            // Knockback
+            Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
+            Vector2 knockbackDirection = new Vector2(collision.transform.position.x - transform.position.x,1).normalized;           
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * 50f, ForceMode2D.Impulse);
+        }
+
         Destroy(gameObject);
     }
 

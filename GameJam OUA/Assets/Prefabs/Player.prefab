@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4665853407780247633}
   - component: {fileID: 4690493050010422600}
   - component: {fileID: 2363200155549489501}
-  - component: {fileID: 3607789269007818558}
+  - component: {fileID: 8833024975352460453}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2585613864151299378, guid: de8e5c51d897d05439eddf5ed52d9dec, type: 3}
   bulletSpawnPos: {fileID: 3412723477463094878}
+  shootTime: 0.3
 --- !u!50 &2363200155549489501
 Rigidbody2D:
   serializedVersion: 4
@@ -116,8 +117,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 20
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -126,12 +127,12 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!61 &3607789269007818558
-BoxCollider2D:
+  m_Constraints: 6
+--- !u!70 &8833024975352460453
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -163,18 +164,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Direction: 0
 --- !u!1 &6136259637376455273
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +177,7 @@ GameObject:
   - component: {fileID: 5063501758313062236}
   - component: {fileID: 1194093103246142072}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +275,7 @@ Transform:
   m_GameObject: {fileID: 7948880417860041094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76, y: 0.155, z: 0}
+  m_LocalPosition: {x: 1.04, y: 0.155, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class CharacterController : MonoBehaviour
 {
@@ -18,12 +19,15 @@ public class CharacterController : MonoBehaviour
     float currentTime = 0f;
     [SerializeField] float shootTime = 0.5f;
 
+    private SpriteRenderer sprite;
+
     int health = 100;
     int damage = 5;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -40,7 +44,13 @@ public class CharacterController : MonoBehaviour
             Shoot();
             currentTime = 0f;
         }
-        
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            Debug.Log("You are dead");
+        }
+
     }
 
     private void FixedUpdate()
@@ -53,7 +63,16 @@ public class CharacterController : MonoBehaviour
     public void dealDamage(int incomingDamage)
     {
         health -= incomingDamage;
+        StartCoroutine(FlashRed());
         Debug.Log(health);
+    }
+
+    public IEnumerator FlashRed()
+    {
+        Color originalColor = sprite.color;
+        sprite.color = new Color(1f, 0f, 0f, 0.5f);
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = originalColor;
     }
 
     private void HandleFlip(float horizontalInput)
