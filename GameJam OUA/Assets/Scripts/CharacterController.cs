@@ -17,6 +17,9 @@ public class CharacterController : MonoBehaviour
     float currentTime = 0f;
     [SerializeField] float shootTime = 0.5f;
 
+    int health = 100;
+    int damage = 5;
+
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
@@ -38,7 +41,24 @@ public class CharacterController : MonoBehaviour
             Shoot();
             currentTime = 0f;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+
         
+    }
+
+    private void Jump()
+    {
+        Debug.Log("To be implemented");
+    }
+
+    public void dealDamage(int incomingDamage)
+    {
+        health -= incomingDamage;
+        Debug.Log(health);
     }
 
     private void HandleFlip(float horizontalInput)
@@ -64,6 +84,10 @@ public class CharacterController : MonoBehaviour
         GameObject newBullet = Instantiate(bullet, bulletSpawnPos.position, bullet.transform.rotation);
         Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
         Vector2 direction = new Vector2(lookDirection, 0f);
+
+        // Sets the bullet's damage value equal to the player's damage value.
+        BulletBehavior bulletScripts = newBullet.GetComponent<BulletBehavior>();
+        bulletScripts.setBulletDamage(damage);
         rb.velocity = direction * bulletSpeed;
     }
 }
