@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
-{   
+{
+    Rigidbody2D playerRb;
+    float playerSpeed = 7f;
+
     // lookDirection = 1 -> Facing Right, lookDirection = -1 -> Facing Left
     float lookDirection = 1f;
 
@@ -12,16 +15,19 @@ public class CharacterController : MonoBehaviour
     [SerializeField] Transform bulletSpawnPos;
     float bulletSpeed = 10f;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        playerRb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        HandleFlip();
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        // Moves the player
+        playerRb.velocity = new Vector2(horizontalInput * playerSpeed, playerRb.velocity.y);
+
+        HandleFlip(horizontalInput);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -30,14 +36,14 @@ public class CharacterController : MonoBehaviour
         
     }
 
-    private void HandleFlip()
+    private void HandleFlip(float horizontalInput)
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        
 
         // Flips the Player and changes look direction
         if (horizontalInput < 0)
         {
-            transform.rotation = Quaternion.Euler(0, -180, 0);
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, 0);
             lookDirection = -1f;
         }
         else if (horizontalInput > 0)
@@ -47,9 +53,10 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    // Shoots and moves the bullet 
     private void Shoot()
     {
-        GameObject newBullet = Instantiate(bullet, bulletSpawnPos.position,bullet.transform.rotation);
+        GameObject newBullet = Instantiate(bullet, bulletSpawnPos.position, bullet.transform.rotation);
         Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
         Vector2 direction = new Vector2(lookDirection, 0f);
         rb.velocity = direction * bulletSpeed;
