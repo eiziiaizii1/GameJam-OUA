@@ -14,6 +14,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletSpawnPos;
     float bulletSpeed = 10f;
+    float currentTime = 0f;
+    [SerializeField] float shootTime = 0.5f;
 
     void Start()
     {
@@ -29,9 +31,12 @@ public class CharacterController : MonoBehaviour
 
         HandleFlip(horizontalInput);
 
-        if (Input.GetMouseButtonDown(0))
+        currentTime += Time.deltaTime;
+
+        if (Input.GetMouseButtonDown(0) && currentTime >= shootTime)
         {
             Shoot();
+            currentTime = 0f;
         }
         
     }
