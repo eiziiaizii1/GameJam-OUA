@@ -50,14 +50,15 @@ public class PlayerBehavior : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
-        
+
         HandleFlip(horizontalInput);
-        
+
         currentTime += Time.deltaTime;
 
         if (Input.GetMouseButtonDown(0) && currentTime >= shootTime)
         {
             SoundManager.Instance.PlayEffectSound(SoundManager.Instance.PlatethrowSound, 0.02f);
+            animator.SetTrigger("Attack");
             Shoot();
             currentTime = 0f;
         }
@@ -76,6 +77,8 @@ public class PlayerBehavior : MonoBehaviour
         }
 
         handleCrouch(isCrouching);
+
+
     }
 
     private void handleCrouch(bool isCrouching)
@@ -98,6 +101,18 @@ public class PlayerBehavior : MonoBehaviour
     {
         // Moves the player
         playerRb.velocity = new Vector2(horizontalInput * playerSpeed, playerRb.velocity.y);
+
+        if (playerRb.velocity.x != 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        //bhn
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+
+
     }
 
     public void dealDamage(int incomingDamage)
@@ -131,7 +146,7 @@ public class PlayerBehavior : MonoBehaviour
 
     // Shoots and moves the bullet 
     private void Shoot()
-    {
+    {  
         GameObject newBullet = Instantiate(bullet, bulletSpawnPos.position, bullet.transform.rotation);
         Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
         Vector2 direction = new Vector2(lookDirection, 0f);

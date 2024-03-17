@@ -14,12 +14,14 @@ public class EnemyBehavior : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Color defaultColor;
+    Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = rb.GetComponent<SpriteRenderer>();
         defaultColor = GetComponent<SpriteRenderer>().color;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -52,11 +54,13 @@ public class EnemyBehavior : MonoBehaviour
 
         if (distance > stopDistance)
         {
+            animator.SetBool("isWalking", true);
             rb.velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
         }
         else
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
+            animator.SetBool("isWalking", false);
         }
     }
 
