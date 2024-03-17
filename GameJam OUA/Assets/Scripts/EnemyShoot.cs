@@ -8,6 +8,7 @@ public class EnemyShoot : MonoBehaviour
     public float bulletSpeed = 5f;
     public float shootInterval = 2f;
     public int bulletDamage = 10;
+    [SerializeField] Vector2 bulletSpawn;
 
     void Start()
     {
@@ -18,7 +19,8 @@ public class EnemyShoot : MonoBehaviour
     {
         while (true) 
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, bulletPrefab.transform.rotation);
+            Vector2 currentPos = new Vector2(transform.position.x, transform.position.y);
+            GameObject bullet = Instantiate(bulletPrefab, (currentPos + bulletSpawn), bulletPrefab.transform.rotation);
 
             bullet.GetComponent<BulletBehavior>().setBulletDamage(bulletDamage);
 

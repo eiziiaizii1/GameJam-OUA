@@ -21,13 +21,18 @@ public class PlayerBehavior : MonoBehaviour
 
     private SpriteRenderer sprite;
     private Color defaultColor;
-
-    public int maxHealth = 100;
+    
+    public int maxHealth = 80;
     public int health;
     public int damage = 10;
 
     bool isCrouching = false;
     Animator animator;
+    [SerializeField] Vector2 crouchOffset;
+    [SerializeField] Vector2 crouchSize;
+    [SerializeField] Vector2 standOffset;
+    [SerializeField] Vector2 standsize;
+    CapsuleCollider2D collider;
 
     void Start()
     {
@@ -36,6 +41,9 @@ public class PlayerBehavior : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         defaultColor = GetComponent<SpriteRenderer>().color;
         animator = GetComponent<Animator>();
+        collider = GetComponent<CapsuleCollider2D>();
+        collider.offset = standOffset;
+        collider.size = standsize;
     }
 
     void Update()
@@ -44,7 +52,7 @@ public class PlayerBehavior : MonoBehaviour
 
         
         HandleFlip(horizontalInput);
-
+        
         currentTime += Time.deltaTime;
 
         if (Input.GetMouseButtonDown(0) && currentTime >= shootTime)
@@ -64,6 +72,22 @@ public class PlayerBehavior : MonoBehaviour
         {
             isCrouching = !isCrouching;
             animator.SetBool("isCrouching", isCrouching);
+        }
+
+        handleCrouch(isCrouching);
+    }
+
+    private void handleCrouch(bool isCrouching)
+    {
+        if (isCrouching)
+        {
+            collider.offset = crouchOffset;
+            collider.size = crouchSize;
+        }
+        else
+        {
+            collider.offset = standOffset;
+            collider.size = standsize;
         }
     }
 

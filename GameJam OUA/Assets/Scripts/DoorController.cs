@@ -7,35 +7,28 @@ public class DoorController : MonoBehaviour
     private Animator animator;
     private bool isDoorOpen = false;
     [SerializeField] GameObject player;
-    Color initialColor;
-    Color closedDoor;
+    BoxCollider2D colliderDoor;
 
     // INSTEAD OF COLOR, CHANGE THE SPRITE to closed door sprite, or use animator directly top change visuals 
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        initialColor = gameObject.GetComponent<SpriteRenderer>().color;
-        closedDoor = new Color(initialColor.r, initialColor.g, initialColor.b, 0.5f);
+        colliderDoor = GetComponent<BoxCollider2D>();
+        animator.SetBool("doorOpen", false);
     }
 
     void Update()
     {
         float distanceFromPlayer =Mathf.Abs(player.transform.position.x - transform.position.x);
 
-        if (Input.GetKeyDown(KeyCode.E) && distanceFromPlayer <= 2f)
+        // Oyuncu öldü mü kontrol et!!
+        if (Input.GetKeyDown(KeyCode.E) && distanceFromPlayer <= 2.5f)
         {
+            Debug.Log("awslpdöaspdlo");
             isDoorOpen = !isDoorOpen;
-            gameObject.GetComponent<BoxCollider2D>().enabled = isDoorOpen;
-            if (!isDoorOpen)
-            {
-                gameObject.GetComponent<SpriteRenderer>().color = closedDoor;
-            }
-            else
-            {
-                gameObject.GetComponent<SpriteRenderer>().color = initialColor;
-            }
-            //animator.SetBool("doorOpen", isDoorOpen);
+            animator.SetBool("doorOpen", isDoorOpen);
+            colliderDoor.enabled = !isDoorOpen;
         }
     }
 }

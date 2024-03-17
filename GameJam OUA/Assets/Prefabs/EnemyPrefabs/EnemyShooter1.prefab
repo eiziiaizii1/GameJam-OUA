@@ -199,6 +199,7 @@ MonoBehaviour:
   bulletSpeed: 8
   shootInterval: 3
   bulletDamage: 10
+  bulletSpawn: {x: 1, y: 0.4}
 --- !u!114 &1792890872796973775
 MonoBehaviour:
   m_ObjectHideFlags: 0
