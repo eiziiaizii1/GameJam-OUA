@@ -4,4 +4,13 @@ Abeg Aspava, Güneş Sistemi'nin en gözde restoranıydı. Ancak, bir gece bekle
 
 Uzaylıların gemileri aniden ortaya çıktı ve restorana doğru ateş yağdırdı. Kahraman garson, sıradan bir önlük altında gizlenen bir savaşçıydı. Elinde sanki bir tabak değil, adeta bir enerji silahı vardı ve hızla tezgahın arkasına geçti. Müşterileri korurken, uzaylı saldırganlara karşı savaşacaktı.
 
-Kahraman garson, uzaylıları savuştururken lezzetli yemeklerin tadını unutmadı. Belki de bu beklenmedik savaş, sıradan bir garsonun olağanüstü bir kahramana dönüşmesine yol açacaktı. Şimdi, bu mücadelede restoranınızı korumaya ve galaksiyi uzaylılardan kurtarmaya hazır mısınız?  Kim bilir belki ileride siparişinizi bile getirebiliriz! 
+Kahraman garson, uzaylıları savuştururken lezzetli yemeklerin tadını unutmadı. Belki de bu beklenmedik savaş, sıradan bir garsonun olağanüstü bir kahramana dönüşmesine yol açacaktı. Şimdi, bu mücadelede restoranınızı korumaya ve galaksiyi uzaylılardan kurtarmaya hazır mısınız?  
+
+Kim bilir belki ileride siparişinizi bile getirebiliriz...
+
+
+## Takım Üyeleri
+Elifsu Genç: Art  
+Eylül Kavak Öz: Development  
+Bahadır Hamza Nacar: Development, Art  
+Aziz Önder: Development  
