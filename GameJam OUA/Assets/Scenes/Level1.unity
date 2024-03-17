@@ -500,7 +500,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 285296771}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 897006614}
+        m_TargetAssemblyTypeName: ManageGame, Assembly-CSharp
+        m_MethodName: exitFromTheGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &285296771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,7 +856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &790752467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1087,6 +1099,7 @@ MonoBehaviour:
   baseHealth: {fileID: 1654988469}
   playerBehaviorScript: {fileID: 1990276257}
   restaurantScript: {fileID: 8145375}
+  gameOverScreen: {fileID: 790752466}
 --- !u!4 &1019998810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8895534514899760428, guid: 540a43f546354ac43ad83f19bd4799ee, type: 3}
@@ -1448,7 +1461,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1486154987}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 897006614}
+        m_TargetAssemblyTypeName: ManageGame, Assembly-CSharp
+        m_MethodName: restartTheGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1486154987
 MonoBehaviour:
   m_ObjectHideFlags: 0
