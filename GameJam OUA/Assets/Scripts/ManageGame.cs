@@ -33,8 +33,11 @@ public class ManageGame : MonoBehaviour
     {
         if (playerBehaviorScript.health <= 0 || restaurantScript.restaurantHealth <= 0)
         {
-            Time.timeScale = 0.0f;
             gameOverScreen.SetActive(true);
+            SoundManager.Instance.StopBackgrounSound();
+            //bozuk ses
+            //SoundManager.Instance.PlayEffectSound(SoundManager.Instance.GameOverSound);
+            Time.timeScale = 0.0f;
         }
         else
         {

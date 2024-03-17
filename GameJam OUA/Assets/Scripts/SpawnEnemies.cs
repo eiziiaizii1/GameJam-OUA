@@ -27,6 +27,7 @@ public class SpawnEnemies : MonoBehaviour
             int randomEnemyIndex = Random.Range(0, enemies.Count);
             GameObject newEnemy = Instantiate(enemies[randomEnemyIndex], transform.position, Quaternion.identity);
             newEnemy.GetComponent<EnemyBehavior>().setEnemyTarget(enemyTargetLocation);
+            SoundManager.Instance.PlayEffectSound(SoundManager.Instance.EnemySpawnSound);
             timePassed = 0;
             timeInterval = Random.Range(1,2);
         }

@@ -91,11 +91,12 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+
+
     private void FixedUpdate()
     {
         // Moves the player
         playerRb.velocity = new Vector2(horizontalInput * playerSpeed, playerRb.velocity.y);
-
     }
 
     public void dealDamage(int incomingDamage)
@@ -114,8 +115,6 @@ public class PlayerBehavior : MonoBehaviour
 
     private void HandleFlip(float horizontalInput)
     {
-        
-
         // Flips the Player and changes look direction
         if (horizontalInput < 0)
         {

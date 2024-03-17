@@ -9,8 +9,6 @@ public class DoorController : MonoBehaviour
     [SerializeField] GameObject player;
     BoxCollider2D colliderDoor;
 
-    // INSTEAD OF COLOR, CHANGE THE SPRITE to closed door sprite, or use animator directly top change visuals 
-
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -26,7 +24,7 @@ public class DoorController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && distanceFromPlayer <= 2.5f)
             {
-                Debug.Log("awslpdöaspdlo");
+                Debug.Log("door interaction");
                 isDoorOpen = !isDoorOpen;
                 animator.SetBool("doorOpen", isDoorOpen);
                 colliderDoor.enabled = !isDoorOpen;
