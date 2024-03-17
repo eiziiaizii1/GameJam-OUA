@@ -10,10 +10,11 @@ public class DoorController : MonoBehaviour
     Color initialColor;
     Color closedDoor;
 
-    // INSTEAD OF COLOR, CHANGE THE SPRITE to closed door sprite 
+    // INSTEAD OF COLOR, CHANGE THE SPRITE to closed door sprite, or use animator directly top change visuals 
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         initialColor = gameObject.GetComponent<SpriteRenderer>().color;
         closedDoor = new Color(initialColor.r, initialColor.g, initialColor.b, 0.5f);
     }
@@ -34,7 +35,7 @@ public class DoorController : MonoBehaviour
             {
                 gameObject.GetComponent<SpriteRenderer>().color = initialColor;
             }
-            animator.SetBool("doorOpen", isDoorOpen);
+            //animator.SetBool("doorOpen", isDoorOpen);
         }
     }
 }
