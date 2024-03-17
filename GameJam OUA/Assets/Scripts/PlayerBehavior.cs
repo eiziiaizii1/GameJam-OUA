@@ -26,12 +26,16 @@ public class PlayerBehavior : MonoBehaviour
     public int health;
     public int damage = 10;
 
+    bool isCrouching = false;
+    Animator animator;
+
     void Start()
     {
         health = maxHealth;
         playerRb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         defaultColor = GetComponent<SpriteRenderer>().color;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -55,6 +59,12 @@ public class PlayerBehavior : MonoBehaviour
             Debug.Log("You are dead");
         }
 
+        // Crouching
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            isCrouching = !isCrouching;
+            animator.SetBool("isCrouching", isCrouching);
+        }
     }
 
     private void FixedUpdate()
