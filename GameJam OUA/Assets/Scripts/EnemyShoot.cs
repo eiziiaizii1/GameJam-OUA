@@ -21,12 +21,10 @@ public class EnemyShoot : MonoBehaviour
         {
             Vector2 currentPos = new Vector2(transform.position.x, transform.position.y);
             GameObject bullet = Instantiate(bulletPrefab, (currentPos + bulletSpawn), bulletPrefab.transform.rotation);
-
             bullet.GetComponent<BulletBehavior>().setBulletDamage(bulletDamage);
-
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
             rb.velocity = transform.right * bulletSpeed;
+            SoundManager.Instance.PlayEffectSound(SoundManager.Instance.LaserSoundEffect);
 
             Destroy(bullet, 5f);
 

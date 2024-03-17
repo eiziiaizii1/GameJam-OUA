@@ -20,15 +20,17 @@ public class DoorController : MonoBehaviour
 
     void Update()
     {
-        float distanceFromPlayer =Mathf.Abs(player.transform.position.x - transform.position.x);
-
-        // Oyuncu öldü mü kontrol et!!
-        if (Input.GetKeyDown(KeyCode.E) && distanceFromPlayer <= 2.5f)
+        if (player != null)
         {
-            Debug.Log("awslpdöaspdlo");
-            isDoorOpen = !isDoorOpen;
-            animator.SetBool("doorOpen", isDoorOpen);
-            colliderDoor.enabled = !isDoorOpen;
+            float distanceFromPlayer = Mathf.Abs(player.transform.position.x - transform.position.x);
+
+            if (Input.GetKeyDown(KeyCode.E) && distanceFromPlayer <= 2.5f)
+            {
+                Debug.Log("awslpdöaspdlo");
+                isDoorOpen = !isDoorOpen;
+                animator.SetBool("doorOpen", isDoorOpen);
+                colliderDoor.enabled = !isDoorOpen;
+            }
         }
     }
 }

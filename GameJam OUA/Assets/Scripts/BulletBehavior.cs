@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour
 {
+    public AudioClip smash;
 
     float deleteTime = 2f;
     public int bulletDamage = 5;
@@ -46,6 +47,10 @@ public class BulletBehavior : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackMultiplier, ForceMode2D.Impulse);
         }
 
+        if (gameObject.CompareTag("Bullet"))
+        {
+            SoundManager.Instance.PlayEffectSound(SoundManager.Instance.SmashSound);
+        }
         Destroy(gameObject);
     }
 
