@@ -10,8 +10,11 @@ public class EnemyShoot : MonoBehaviour
     public int bulletDamage = 10;
     [SerializeField] Vector2 bulletSpawn;
 
+    Animator animator;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         StartCoroutine(ShootCoroutine());
     }
 
@@ -19,6 +22,7 @@ public class EnemyShoot : MonoBehaviour
     {
         while (true) 
         {
+            animator.SetTrigger("Attack");
             Vector2 currentPos = new Vector2(transform.position.x, transform.position.y);
             GameObject bullet = Instantiate(bulletPrefab, (currentPos + bulletSpawn), bulletPrefab.transform.rotation);
 

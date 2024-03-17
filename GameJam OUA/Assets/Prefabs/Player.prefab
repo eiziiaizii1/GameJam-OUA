@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -1889986029
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 859089630, guid: bceb2f2b53baed54f9009092e2552dcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,6 +108,10 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   damage: 10
+  crouchOffset: {x: 0, y: 0}
+  crouchSize: {x: 0, y: 0}
+  standOffset: {x: 0, y: 0}
+  standsize: {x: 0, y: 0}
 --- !u!50 &2363200155549489501
 Rigidbody2D:
   serializedVersion: 4
