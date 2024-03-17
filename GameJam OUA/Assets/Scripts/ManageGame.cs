@@ -27,6 +27,7 @@ public class ManageGame : MonoBehaviour
     {
         maxPlayerHealth = playerBehaviorScript.maxHealth;
         maxBaseHealth = restaurantScript.maxRestaurantHealth;
+        SoundManager.Instance.PlayBackgroundSound();
     }
 
     void Update()
@@ -47,7 +48,7 @@ public class ManageGame : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         SoundManager.Instance.StopBackgroundSound();
-        SoundManager.Instance.PlayEffectSound(SoundManager.Instance.GameOverSound);
+        SoundManager.Instance.PlayEffectSound(SoundManager.Instance.GameOverSound, 0.1f);
         Time.timeScale = 0.0f;
     }
 

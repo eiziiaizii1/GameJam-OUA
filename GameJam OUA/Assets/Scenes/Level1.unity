@@ -1666,6 +1666,9 @@ MonoBehaviour:
   playerHurtSound: {fileID: 8300000, guid: f9fae9c8ced659440b0ced0b1b64a9b8, type: 3}
   baseDamageSound: {fileID: 8300000, guid: f27785605a764b74c88b61a07141f79a, type: 3}
   dyingPlayerSound: {fileID: 8300000, guid: 5f8d59b52b9499f47bf16cfca1c136e6, type: 3}
+  dyingEnemySound: {fileID: 8300000, guid: 2916da5129fe40c41b1a751d0887ed41, type: 3}
+  enemyHurtSound: {fileID: 8300000, guid: afff20594bc94904bb2c7df5046c6970, type: 3}
+  platethrowSound: {fileID: 8300000, guid: 016a3e0c441bfa24a9e4bea29fc5789f, type: 3}
 --- !u!82 &1286753389
 AudioSource:
   m_ObjectHideFlags: 0

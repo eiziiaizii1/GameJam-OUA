@@ -36,11 +36,11 @@ public class BulletBehavior : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackMultiplier, ForceMode2D.Impulse);
             if (collision.gameObject.GetComponent<PlayerBehavior>().health > 0)
             {
-                SoundManager.Instance.PlayEffectSound(SoundManager.Instance.PlayerHurtSound);
+                SoundManager.Instance.PlayEffectSound(SoundManager.Instance.PlayerHurtSound, 0.04f);
             }
             else
             {
-                SoundManager.Instance.PlayEffectSound(SoundManager.Instance.DyingPlayerSound);
+                SoundManager.Instance.PlayEffectSound(SoundManager.Instance.DyingPlayerSound, 0.07f);
             }
 
         }
@@ -54,11 +54,19 @@ public class BulletBehavior : MonoBehaviour
             Vector2 knockbackDirection = new Vector2(collision.transform.position.x - transform.position.x,1).normalized;           
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackMultiplier, ForceMode2D.Impulse);
+            if (collision.gameObject.GetComponent<EnemyBehavior>().health > 0)
+            {
+                SoundManager.Instance.PlayEffectSound(SoundManager.Instance.EnemyHurtSound, 0.07f);
+            }
+            else
+            {
+                SoundManager.Instance.PlayEffectSound(SoundManager.Instance.DyingEnemySound, 0.04f);
+            }
         }
 
         if (gameObject.CompareTag("Bullet"))
         {
-            SoundManager.Instance.PlayEffectSound(SoundManager.Instance.SmashSound);
+            SoundManager.Instance.PlayEffectSound(SoundManager.Instance.SmashSound, 0.01f);
         }
         Destroy(gameObject);
     }

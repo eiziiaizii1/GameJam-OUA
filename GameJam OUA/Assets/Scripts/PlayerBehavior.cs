@@ -57,6 +57,7 @@ public class PlayerBehavior : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && currentTime >= shootTime)
         {
+            SoundManager.Instance.PlayEffectSound(SoundManager.Instance.PlatethrowSound, 0.02f);
             Shoot();
             currentTime = 0f;
         }

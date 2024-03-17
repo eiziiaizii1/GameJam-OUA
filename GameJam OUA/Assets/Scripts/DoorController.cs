@@ -28,7 +28,7 @@ public class DoorController : MonoBehaviour
                 isDoorOpen = !isDoorOpen;
                 animator.SetBool("doorOpen", isDoorOpen);
                 colliderDoor.enabled = !isDoorOpen;
-                SoundManager.Instance.PlayEffectSound(SoundManager.Instance.DoorSound);
+                SoundManager.Instance.PlayEffectSound(SoundManager.Instance.DoorSound, 0.07f);
             }
         }
     }

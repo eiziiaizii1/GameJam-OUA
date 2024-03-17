@@ -24,7 +24,7 @@ public class EnemyShoot : MonoBehaviour
             bullet.GetComponent<BulletBehavior>().setBulletDamage(bulletDamage);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.velocity = transform.right * bulletSpeed;
-            SoundManager.Instance.PlayEffectSound(SoundManager.Instance.LaserSoundEffect);
+            SoundManager.Instance.PlayEffectSound(SoundManager.Instance.LaserSoundEffect, 0.01f);
             
             Destroy(bullet, 5f);
 
