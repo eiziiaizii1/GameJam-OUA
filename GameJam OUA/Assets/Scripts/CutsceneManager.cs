@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class CutsceneManager : MonoBehaviour
 
     public void nextLevel()
     {
-        Debug.Log("Next level is on progress");
+        Debug.Log("button clicked");
+        SceneManager.LoadScene(SceneManager.sceneCount + 1);
+    }
+
+    public void startGame()
+    {
+        Debug.Log("start clicked");
+        SceneManager.LoadScene("Level1");
     }
 }
