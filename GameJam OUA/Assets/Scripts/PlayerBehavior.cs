@@ -55,7 +55,7 @@ public class PlayerBehavior : MonoBehaviour
 
         currentTime += Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(0) && currentTime >= shootTime)
+        if (!isCrouching && Input.GetMouseButtonDown(0) && currentTime >= shootTime)
         {
             SoundManager.Instance.PlayEffectSound(SoundManager.Instance.PlatethrowSound, 0.02f);
             animator.SetTrigger("Attack");
@@ -100,8 +100,11 @@ public class PlayerBehavior : MonoBehaviour
     private void FixedUpdate()
     {
         // Moves the player
-        playerRb.velocity = new Vector2(horizontalInput * playerSpeed, playerRb.velocity.y);
-
+        if (!isCrouching)
+        {
+            playerRb.velocity = new Vector2(horizontalInput * playerSpeed, playerRb.velocity.y);
+        }
+        
         if (playerRb.velocity.x != 0)
         {
             animator.SetBool("isWalking", true);
