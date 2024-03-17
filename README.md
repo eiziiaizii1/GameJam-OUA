@@ -11,6 +11,6 @@ Kim bilir belki ileride siparişinizi bile getirebiliriz...
 
 ## Takım Üyeleri
 **Elifsu Genç**: *Art*  
-**Eylül Kavak Öz**: *Development*
+**Eylül Kavak Öz**: *Development*  
 **Bahadır Hamza Nacar**: *Development, Art*  
 **Aziz Önder**: *Development*  
