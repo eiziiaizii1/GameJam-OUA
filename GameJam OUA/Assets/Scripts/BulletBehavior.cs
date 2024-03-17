@@ -34,7 +34,15 @@ public class BulletBehavior : MonoBehaviour
             Vector2 knockbackDirection = new Vector2(collision.transform.position.x - transform.position.x, 1).normalized;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackMultiplier, ForceMode2D.Impulse);
-            SoundManager.Instance.PlayEffectSound(SoundManager.Instance.PlayerHurtSound);
+            if (collision.gameObject.GetComponent<PlayerBehavior>().health > 0)
+            {
+                SoundManager.Instance.PlayEffectSound(SoundManager.Instance.PlayerHurtSound);
+            }
+            else
+            {
+                SoundManager.Instance.PlayEffectSound(SoundManager.Instance.DyingPlayerSound);
+            }
+
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {

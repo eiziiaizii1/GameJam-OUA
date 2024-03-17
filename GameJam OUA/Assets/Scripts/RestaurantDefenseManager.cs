@@ -49,6 +49,7 @@ public class RestaurantDefenseManager : MonoBehaviour
         while (restaurantHealth > 0 && currentEnemy != null)
         {
             restaurantHealth -= damage;
+            SoundManager.Instance.PlayEffectSound(SoundManager.Instance.BaseDamageSound);
             yield return new WaitForSeconds(damageInterval);
             Debug.Log("Rest Health:" + restaurantHealth);
         }

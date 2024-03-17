@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip enemySpawnSound;
     [SerializeField] private AudioClip gameOverSound;
     [SerializeField] private AudioClip playerHurtSound;
+    [SerializeField] private AudioClip baseDamageSound;
+    [SerializeField] private AudioClip dyingPlayerSound;
 
     public AudioClip LaserSoundEffect { get => laserSoundEffect; set => laserSoundEffect = value; }
     public AudioClip SmashSound { get => smashSound; set => smashSound = value; }
@@ -22,6 +24,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip EnemySpawnSound { get => enemySpawnSound; set => enemySpawnSound = value; }
     public AudioClip GameOverSound { get => gameOverSound; set => gameOverSound = value; }
     public AudioClip PlayerHurtSound { get => playerHurtSound; set => playerHurtSound = value; }
+    public AudioClip BaseDamageSound { get => baseDamageSound; set => baseDamageSound = value; }
+    public AudioClip DyingPlayerSound { get => dyingPlayerSound; set => dyingPlayerSound = value; }
 
 
     private void Awake()
