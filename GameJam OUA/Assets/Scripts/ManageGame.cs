@@ -34,10 +34,7 @@ public class ManageGame : MonoBehaviour
         if (playerBehaviorScript.health <= 0 || restaurantScript.restaurantHealth <= 0)
         {
             gameOverScreen.SetActive(true);
-            SoundManager.Instance.StopBackgrounSound();
-            //bozuk ses
-            //SoundManager.Instance.PlayEffectSound(SoundManager.Instance.GameOverSound);
-            Time.timeScale = 0.0f;
+            StartCoroutine(endGameWithDelay(.1f));
         }
         else
         {
@@ -46,12 +43,22 @@ public class ManageGame : MonoBehaviour
         }
     }
 
+    IEnumerator endGameWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SoundManager.Instance.StopBackgroundSound();
+        SoundManager.Instance.PlayEffectSound(SoundManager.Instance.GameOverSound);
+        Time.timeScale = 0.0f;
+    }
+
+
     public void restartTheGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Debug.Log("Reloading Scene: " + SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
     public void exitFromTheGame()
     {
         Application.Quit();

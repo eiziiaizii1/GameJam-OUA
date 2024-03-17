@@ -14,12 +14,14 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip doorSound;
     [SerializeField] private AudioClip enemySpawnSound;
     [SerializeField] private AudioClip gameOverSound;
+    [SerializeField] private AudioClip playerHurtSound;
 
     public AudioClip LaserSoundEffect { get => laserSoundEffect; set => laserSoundEffect = value; }
     public AudioClip SmashSound { get => smashSound; set => smashSound = value; }
     public AudioClip DoorSound { get => doorSound; set => doorSound = value; }
     public AudioClip EnemySpawnSound { get => enemySpawnSound; set => enemySpawnSound = value; }
     public AudioClip GameOverSound { get => gameOverSound; set => gameOverSound = value; }
+    public AudioClip PlayerHurtSound { get => playerHurtSound; set => playerHurtSound = value; }
 
 
     private void Awake()
@@ -44,11 +46,16 @@ public class SoundManager : MonoBehaviour
         RunSource.Stop();
     }
 
-    public void PlayBackgrounSound()
+    public void PlayBackgroundSound()
     {
         BackgroundMusicSource.Play();
     }
-    public void StopBackgrounSound()
+    public void StopBackgroundSound()
+    {
+        BackgroundMusicSource.Stop();
+    }
+
+    public void StopEffectSounds()
     {
         BackgroundMusicSource.Stop();
     }
@@ -59,6 +66,4 @@ public class SoundManager : MonoBehaviour
 
         EffectSource.PlayOneShot(clipToPlay);
     }
-
-
 }
