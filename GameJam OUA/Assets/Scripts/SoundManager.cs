@@ -11,9 +11,11 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip laserSoundEffect;
     [SerializeField] private AudioClip smashSound;
+    [SerializeField] private AudioClip doorSound;
 
     public AudioClip LaserSoundEffect { get => laserSoundEffect; set => laserSoundEffect = value; }
     public AudioClip SmashSound { get => smashSound; set => smashSound = value; }
+    public AudioClip DoorSound { get => doorSound; set => doorSound = value; }
 
 
     private void Awake()
