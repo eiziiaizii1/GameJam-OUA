@@ -6,6 +6,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     Rigidbody2D playerRb;
+    Animator animator;
     float playerSpeed = 7f;
 
     // lookDirection = 1 -> Facing Right, lookDirection = -1 -> Facing Left
@@ -16,6 +17,7 @@ public class CharacterController : MonoBehaviour
     float bulletSpeed = 10f;
     float currentTime = 0f;
     [SerializeField] float shootTime = 0.5f;
+    bool isCrouching = false;
 
     int health = 100;
     int damage = 5;
@@ -23,6 +25,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -47,7 +50,14 @@ public class CharacterController : MonoBehaviour
             Jump();
         }
 
-        
+        // Crouching
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            isCrouching = !isCrouching;
+            animator.SetBool("isCrouching", isCrouching);
+        }
+
+
     }
 
     private void Jump()
@@ -63,7 +73,7 @@ public class CharacterController : MonoBehaviour
 
     private void HandleFlip(float horizontalInput)
     {
-        
+
 
         // Flips the Player and changes look direction
         if (horizontalInput < 0)
@@ -90,4 +100,5 @@ public class CharacterController : MonoBehaviour
         bulletScripts.setBulletDamage(damage);
         rb.velocity = direction * bulletSpeed;
     }
+
 }
