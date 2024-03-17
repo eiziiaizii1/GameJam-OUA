@@ -26,7 +26,7 @@ public class BulletBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Dealing Damage
-            collision.gameObject.GetComponent<CharacterController>().dealDamage(bulletDamage);
+            collision.gameObject.GetComponent<PlayerBehavior>().dealDamage(bulletDamage);
 
             // Knockback
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();

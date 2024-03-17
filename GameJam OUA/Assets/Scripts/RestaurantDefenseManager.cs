@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class RestaurantDefenseManager : MonoBehaviour
 {
-    public float restaurantHealth = 200f;
+    public int maxRestaurantHealth = 200;
+    public int restaurantHealth;
     public float damageInterval = 1f;
 
     private GameObject currentEnemy;
+
+    private void Start()
+    {
+        restaurantHealth = maxRestaurantHealth;
+    }
 
     void Update()
     {
@@ -37,7 +43,7 @@ public class RestaurantDefenseManager : MonoBehaviour
     }
 
     // Damages to the restaurant overtime
-    IEnumerator DamageOverTime(float damage)
+    IEnumerator DamageOverTime(int damage)
     {
         // Enemy is destroyed means it is null
         while (restaurantHealth > 0 && currentEnemy != null)

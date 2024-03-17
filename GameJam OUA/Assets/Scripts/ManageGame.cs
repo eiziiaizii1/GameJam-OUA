@@ -1,19 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
 
 public class ManageGame : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI playerHealth;
+    [SerializeField] TextMeshProUGUI baseHealth;
+    int maxPlayerHealth;
+    int maxBaseHealth;
 
-    // Start is called before the first frame update
+    [SerializeField] PlayerBehavior playerBehaviorScript;
+    [SerializeField] RestaurantDefenseManager restaurantScript;
+
+
     void Start()
     {
-        
+        maxPlayerHealth = playerBehaviorScript.maxHealth;
+        maxBaseHealth = restaurantScript.maxRestaurantHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (playerBehaviorScript.health <= 0 || restaurantScript.restaurantHealth <= 0)
+        {
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            playerHealth.text = " Health: " + playerBehaviorScript.health + "/" + maxPlayerHealth;
+            baseHealth.text = " Base Health: " + restaurantScript.restaurantHealth + "/" + maxBaseHealth;
+        }
     }
+
 }

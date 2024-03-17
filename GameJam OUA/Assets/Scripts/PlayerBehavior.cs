@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 
-public class CharacterController : MonoBehaviour
+public class PlayerBehavior : MonoBehaviour
 {
     Rigidbody2D playerRb;
     float playerSpeed = 7f;
@@ -20,13 +20,15 @@ public class CharacterController : MonoBehaviour
     [SerializeField] float shootTime = 0.5f;
 
     private SpriteRenderer sprite;
-    private Color defaultColor; 
+    private Color defaultColor;
 
-    public int health = 100;
+    public int maxHealth = 100;
+    public int health;
     public int damage = 10;
 
     void Start()
     {
+        health = maxHealth;
         playerRb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         defaultColor = GetComponent<SpriteRenderer>().color;
